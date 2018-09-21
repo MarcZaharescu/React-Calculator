@@ -54,10 +54,21 @@ class Frame extends React.Component {
 
   handleClick(event){
     const value = event.target.value;
-
+    console.log('value = ', value);
+    console.log('question = ', this.state.question);
+    console.log('answer = ', this.state.answer);
     switch(value){
       case '=': {
-        console.log('a');
+        const answer = eval(this.state.question).toString();
+        this.setState({ answer });
+        break;
+      }
+      case 'Cls': {
+        this.setState({  question: '',  answer: ''});
+        break;
+      }
+      default: {
+        this.setState({question: this.state.question +=value});
       }
     }
   }

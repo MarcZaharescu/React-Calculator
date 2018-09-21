@@ -998,11 +998,24 @@ var Frame = function (_React$Component) {
     key: 'handleClick',
     value: function handleClick(event) {
       var value = event.target.value;
-
+      console.log('value = ', value);
+      console.log('question = ', this.state.question);
+      console.log('answer = ', this.state.answer);
       switch (value) {
         case '=':
           {
-            console.log('a');
+            var answer = eval(this.state.question).toString();
+            this.setState({ answer: answer });
+            break;
+          }
+        case 'Cls':
+          {
+            this.setState({ question: '', answer: '' });
+            break;
+          }
+        default:
+          {
+            this.setState({ question: this.state.question += value });
           }
       }
     }
